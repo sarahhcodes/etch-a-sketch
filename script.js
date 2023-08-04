@@ -1,5 +1,5 @@
 /* TO DO
-- make size of the grid variable (i.e. 16x16)
+- make size of the grid adjustable (i.e. 16x16)
 - add style to button
 - add gradient effect to hover (CSS variables?)
 */
@@ -13,9 +13,6 @@ button.addEventListener('click', () => {
     drawGrid();
     playEAS();
 });
-
-console.log(numberOfBlocks);
-drawGrid();
 
 function drawGrid() {
     container.replaceChildren(); // clears grid
@@ -36,4 +33,6 @@ function playEAS() {
     }));
 };
 
-playEAS(); // ensures that the page loads with Etch-A-Sketch playable
+// ensures that the page loads with Etch-A-Sketch playable
+drawGrid();
+playEAS();
