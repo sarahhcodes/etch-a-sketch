@@ -1,23 +1,28 @@
-/* TO DO
-- make size of the grid adjustable (i.e. 16x16)
-- add style to button
-- add gradient effect to hover (CSS variables?)
-*/
-
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
-let numberOfBlocks = 256;
+let containerWidth = 16;
+let containerHeight = 16;
+let grey;
 
 button.addEventListener('click', () => {
-    numberOfBlocks = prompt("How many blocks?", 256);
+    containerWidth = prompt("How many blocks left and right?", 16);
+    containerHeight = prompt("How many blocks up and down?", 16);
+
+    if (containerWidth >= 101 || containerHeight > 101) {
+        alert("You picked too big a number! Make sure both your numbers are less than 101.");
+        containerWidth = 16;
+        containerHeight = 16;
+    };
+
+    container.style.width = 12*containerWidth+"px";
+    container.style.height = 12*containerHeight+"px";
     drawGrid();
     playEAS();
 });
 
 function drawGrid() {
     container.replaceChildren(); // clears grid
-
-        for (let i = 0; i < numberOfBlocks; i++) {
+        for (let i = 0; i < (containerWidth*containerHeight); i++) {
             let block = document.createElement('div');
             block.className = 'block';
            container.appendChild(block);
@@ -29,7 +34,8 @@ function playEAS() {
     const blocks = document.querySelectorAll('.block');
 
     blocks.forEach(block => block.addEventListener('mouseover', () => {
-        block.classList.add('blockHover');
+        grey = Math.random()*200;
+        block.style.background = "rgb("+ grey + "," + grey + "," + grey +")";
     }));
 };
 
