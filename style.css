@@ -1,9 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 body {
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.etchasketch {
     background-color: rgb(171, 66, 87);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 5%;
+    padding: 10px 25px 50px 25px;
+    width: 50%;
+    border: 5px solid #ddd;
+    border-radius: 25px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: white;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
 }
 
 button {
@@ -12,14 +36,15 @@ button {
 }
 
 .container {
-    width: 192px;
     display: flex;
-    flex-wrap: wrap;
+    border-style: solid;
+    border-color:#fff;
+    padding: 5px;
 }
 
 .block {
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
     background-color: rgb(255,255,255);
     margin: 1px;
 }

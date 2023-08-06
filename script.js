@@ -1,32 +1,35 @@
 const container = document.querySelector('.container');
 const button = document.querySelector('button');
-let containerWidth = 16;
-let containerHeight = 16;
+let blockSize = 16;
+let numberOfBlocks = 30;
 let grey;
 
 button.addEventListener('click', () => {
-    containerWidth = prompt("How many blocks left and right?", 16);
-    containerHeight = prompt("How many blocks up and down?", 16);
+    blockSize = parseInt(prompt("What size would you like your blocks?", 16));
 
-    if (containerWidth >= 101 || containerHeight > 101) {
+    if (blockSize >= 101) {
         alert("You picked too big a number! Make sure both your numbers are less than 101.");
-        containerWidth = 16;
-        containerHeight = 16;
+        blockSize = 16;
     };
 
-    container.style.width = 12*containerWidth+"px";
-    container.style.height = 12*containerHeight+"px";
+    numberOfBlocks = Math.round(540/(blockSize+2));
     drawGrid();
     playEAS();
 });
 
 function drawGrid() {
     container.replaceChildren(); // clears grid
-        for (let i = 0; i < (containerWidth*containerHeight); i++) {
+    for (let i = 0; i < numberOfBlocks; i++) {
+        let containerRow = document.createElement('div');
+        for (let j = 0; j < numberOfBlocks; j++) {
             let block = document.createElement('div');
             block.className = 'block';
-           container.appendChild(block);
+            block.style.width = blockSize + 'px';
+            block.style.height = blockSize + 'px';
+            containerRow.appendChild(block);
         };
+        container.appendChild(containerRow);
+    };
 };
 
 // function that adds the hover effect to the blocks
